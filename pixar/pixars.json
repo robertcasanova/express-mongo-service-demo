@@ -1,0 +1,92 @@
+[
+  {
+    "year": 1995,
+    "title": "Toy Story",
+    "length": 81,
+    "score": 8.3
+  },
+  {
+    "year": 1998,
+    "title": "A Bug's Life",
+    "length": 96,
+    "score": 7.2
+  },
+  {
+    "year": 1999,
+    "title": "Toy Story 2",
+    "length": 92,
+    "score": 7.9
+  },
+  {
+    "year": 2001,
+    "title": "Monsters, Inc.",
+    "length": 90,
+    "score": 8.1
+  },
+  {
+    "year": 2003,
+    "title": "Finding Nemo",
+    "length": 104,
+    "score": 8.2
+  },
+  {
+    "year": 2004,
+    "title": "The Incredibles",
+    "length": 115,
+    "score": 8
+  },
+  {
+    "year": 2006,
+    "title": "Cars",
+    "length": 116,
+    "score": 7.2
+  },
+  {
+    "year": 2007,
+    "title": "Ratatouille",
+    "length": 111,
+    "score": 8
+  },
+  {
+    "year": 2008,
+    "title": "WALL-E",
+    "length": 97,
+    "score": 8.4
+  },
+  {
+    "year": 2009,
+    "title": "Up",
+    "length": 96,
+    "score": 8.3
+  },
+  {
+    "year": 2010,
+    "title": "Toy Story 3",
+    "length": 103,
+    "score": 8.4
+  },
+  {
+    "year": 2011,
+    "title": "Cars 2",
+    "length": 113,
+    "score": 6.3
+  },
+  {
+    "year": 2012,
+    "title": "Brave",
+    "length": 100,
+    "score": 7.2
+  },
+  {
+    "year": 2013,
+    "title": "Monsters University",
+    "length": 107,
+    "score": 7.4
+  },
+  {
+    "year": 2015,
+    "title": "Inside Out",
+    "length": 102,
+    "score": 8.8
+  }
+]
