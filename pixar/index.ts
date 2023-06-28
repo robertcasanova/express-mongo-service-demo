@@ -7,7 +7,7 @@ export interface Movie {
   score: number;
 }
 
-export function getMovies() {
+export function getMovies(): Movie[] {
   return movies;
 }
 

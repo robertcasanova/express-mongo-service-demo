@@ -10,7 +10,18 @@ app.get("/healthz", (req: Request, res: Response) => {
 
 app.get("/movies", (req: Request, res: Response) => {
   const movies = getMovies();
-  res.status(200).json(movies);
+  const query = req.query.q as string|undefined;
+  if(!query) {
+    return res.status(200).json(movies);
+  } 
+
+  const filteredMovies = movies.filter(film => film.title.match(new RegExp(query,"i")))
+  
+  if(filteredMovies.length === 0) {
+    return res.status(404).send("Cannot find movie!");
+  }
+
+  return res.status(200).json(filteredMovies);
 })
 
 app.listen(port, () => {
