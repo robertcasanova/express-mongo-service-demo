@@ -1,10 +1,13 @@
 import express, { Request, Response } from 'express';
 import { getMovies, getMoviesFilteredByTitle } from './pixar';
 import mongoose from 'mongoose';
+import cors from "cors";
 
 const app = express();
-const port = 3000;
+const port = 3001;
 const db = "mongodb://test:test@localhost:27017/pixar"
+
+app.use(cors())
 
 app.get("/healthz", (req: Request, res: Response) => {
   res.sendStatus(200);

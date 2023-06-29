@@ -1,5 +1,4 @@
 import { Schema, model } from "mongoose";
-import movies from "./pixars.json";
 
 export interface IMovie {
   title: string;
