@@ -1,6 +1,6 @@
 import 'dotenv/config'
 import express from 'express'
-import type { Request, Response } from 'express'
+import type { NextFunction, Request, Response } from 'express'
 import { getMovies, getMoviesFilteredByTitle } from './pixar'
 import mongoose from 'mongoose'
 import cors from 'cors'
@@ -20,21 +20,32 @@ app.get('/healthz', (req: Request, res: Response) => {
   res.sendStatus(200)
 })
 
-app.get('/movies', async (req, res) => {
-  const query = req.query.q as string | undefined
+app.get('/movies', async (req, res, next) => {
+  try {
+    const query = req.query.q as string | undefined
 
-  if (!query) {
-    const movies = await getMovies()
-    return res.status(200).json(movies)
+    if (!query) {
+      const movies = await getMovies()
+      return res.status(200).json(movies)
+    }
+
+    const filteredMovies = await getMoviesFilteredByTitle({ q: query })
+
+    if (filteredMovies.length === 0) {
+      return res.status(404).send('Cannot find movie!')
+    }
+
+    return res.status(200).json(filteredMovies)
+  } catch (err) {
+    next(err)
   }
+})
 
-  const filteredMovies = await getMoviesFilteredByTitle({ q: query })
-
-  if (filteredMovies.length === 0) {
-    return res.status(404).send('Cannot find movie!')
-  }
-
-  return res.status(200).json(filteredMovies)
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error(err.stack)
+  res.status(500).send('Something broke!')
+  // https://github.com/goldbergyoni/nodebestpractices/blob/master/sections/errorhandling/centralizedhandling.md#code-example--handling-errors-within-a-dedicated-object
+  // @TODO await errorHandler.handleError(err, res);
 })
 
 const start = async (): Promise<void> => {
@@ -45,7 +56,6 @@ const start = async (): Promise<void> => {
       console.log(`Application is running on port ${port}.`)
     })
   } catch (err) {
-    console.error(err)
     process.exit(1)
   }
 }
