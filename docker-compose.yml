@@ -10,12 +10,10 @@ services:
       MONGO_HOST: ${MONGO_HOST}
     ports:
       - "3001:3001"
-    expose:
-      - 3001
     depends_on:
       - db
   db:
-    image: "mongo:latest"
+    image: "mongo:6.0.8"
     restart: always
     environment: 
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USER:-mongodb}
