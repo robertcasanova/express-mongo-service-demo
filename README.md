@@ -1,3 +1,7 @@
+## Init eslint
+
+npx eslint --init
+
 ## Run Mongo locally
 
 ```

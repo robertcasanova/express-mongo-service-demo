@@ -4,6 +4,7 @@
     "target": "es6",
     "rootDir": "./",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "strictNullChecks": true
   }
 }
