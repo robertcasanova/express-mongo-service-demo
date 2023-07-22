@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import express from 'express'
 import type { Request, Response } from 'express'
 import { getMovies, getMoviesFilteredByTitle } from './pixar'
@@ -5,12 +6,12 @@ import mongoose from 'mongoose'
 import cors from 'cors'
 
 const app = express()
-const port = process.env.PORT || 3001
-const mongoUser = process.env.MONGO_USER || 'test'
-const mongoPwd = process.env.MONGO_PWD || 'test'
-const mongoHost = process.env.MONGO_HOST || 'localhost'
-const mongoPort = process.env.MONGO_PORT || '27017'
-const mongoDb = process.env.MONGO_DB || 'pixar'
+const port = process.env.PORT as string
+const mongoUser = process.env.MONGO_USER as string
+const mongoPwd = process.env.MONGO_PWD as string
+const mongoHost = process.env.MONGO_HOST as string
+const mongoPort = process.env.MONGO_PORT as string
+const mongoDb = process.env.MONGO_DB as string
 const db = `mongodb://${mongoUser}:${mongoPwd}@${mongoHost}:${mongoPort}/${mongoDb}`
 
 app.use(cors())
