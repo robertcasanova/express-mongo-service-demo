@@ -17,4 +17,4 @@ db.movies.createIndex({ title: "text"})
 
 EOF
 
-mongoimport --db $MONGO_DB --collection movies --jsonArray --file /tmp/pixars.json
+mongoimport --db $MONGO_DB --collection movies --jsonArray --file /tmp/movies.json

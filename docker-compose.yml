@@ -27,7 +27,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./pixar/pixars.json:/tmp/pixars.json:ro
+      - ./pixar/movies.json:/tmp/movies.json:ro
       - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
       - db_data:/data/db
 volumes:
