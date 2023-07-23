@@ -1,25 +1,22 @@
-import { Schema, model } from 'mongoose'
+import { getMovies, getMoviesFilteredByTitle } from "./data"
 
-export interface IMovie {
-  title: string
-  year: number
-  length: number
-  score: number
-}
+export async function getMoviesAction (req, res, next): Promise<void> {
+  try {
+    const query = req.query.q as string | undefined
 
-const movieSchema = new Schema<IMovie>({
-  title: { type: String, required: true },
-  year: { type: Number, required: true },
-  length: { type: Number, required: true },
-  score: { type: Number, required: true }
-})
+    if (!query) {
+      const movies = await getMovies()
+      return res.status(200).json(movies)
+    }
 
-export const Movie = model<IMovie>('Movie', movieSchema)
+    const filteredMovies = await getMoviesFilteredByTitle({ q: query })
 
-export async function getMovies (): Promise<IMovie[]> {
-  return await Movie.find()
-}
+    if (filteredMovies.length === 0) {
+      return res.status(404).send("Cannot find movie!")
+    }
 
-export async function getMoviesFilteredByTitle ({ q }: { q: string }): Promise<IMovie[]> {
-  return await Movie.find({ $text: { $search: q } }).sort({ score: -1 })
+    return res.status(200).json(filteredMovies)
+  } catch (err) {
+    next(err)
+  }
 }

@@ -20,6 +20,7 @@
     "eslint-plugin-mocha-no-only": "^1.1.1",
     "eslint-plugin-n": "^16.0.1",
     "eslint-plugin-promise": "^6.1.1",
+    "mongodb-memory-server": "^8.13.0",
     "nodemon": "^2.0.22",
     "prettier": "^3.0.0",
     "ts-node": "^10.9.1",
